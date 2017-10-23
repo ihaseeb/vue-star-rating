@@ -97,13 +97,19 @@
 
         <h2>Right To Left</h2>
         <star-rating :rtl="true" :increment="0.01"></star-rating>
+
+        <h2>Review</h2>
+        <!-- <review :reviews = 'reviews'></review> -->
+
     </div>
 
-    <script type="text/javascript">
+    <script>
+    // import review from './src/review.vue'
     new Vue({
         el: '#app',
         components:{
-          'star-rating': VueStarRating.default
+          'star-rating': VueStarRating.default,
+        //   'review': review
         },
         methods: {
             setRating: function(rating) {
@@ -127,7 +133,17 @@
             rating: "No Rating Selected",
             currentRating: "No Rating",
             currentSelectedRating: "No Current Rating",
-            resetableRating: 3
+            resetableRating: 3,
+            reviews: {
+                comment: 'some comment',
+                rating: {
+                    cleanliness: 5,
+                    overallRating: 3,
+                    staff: 4,
+                    location: 3,
+                    comfort: 3
+                }
+            }
         }
     });
     </script>

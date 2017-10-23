@@ -2,8 +2,8 @@
 module.exports = function(config) {
     config.set({
         browsers: [
-            'PhantomJS'
-            //'Chrome'
+            'PhantomJS',
+            'Chrome'
         ],
         frameworks: ['jasmine'],
         files: ['spec/**/*.js'],

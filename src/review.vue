@@ -5,14 +5,14 @@
           <v-card>
             <v-container>
               <v-layout>
-                <v-flex offset-md3>
+                <v-flex>
                   {{review.comment}}
                 </v-flex>
               </v-layout>
               <v-layout row wrap>
-                <v-flex xs12 sm6 md8 class="mt-2" @click="onClickRating(review.rating)">
-                  <v-flex xs6 sm3 md4 style="display: inline-block">
-                  <p class="primary--text" style="font-size: 16px;">Overall Rating:</p>
+                <v-flex xs12 sm6 md8 class="mt-2" >
+                  <v-flex xs6 sm3 md5 style="display: inline-block">
+                  <p class="primary--text" style="font-size: 18px;">Overall Rating:</p>
                   </v-flex>
                   <v-flex xs6 sm3 md4 style="display: inline">
                     <star-rating 
@@ -29,17 +29,17 @@
                   </v-flex>
                 </v-flex>
               </v-layout>
-            <v-dialog v-model="dialog">
-              <v-card>
-                <v-container>
+            <!-- <v-dialog v-model="dialog"> -->
+              <!-- <v-card> -->
+                <!-- <v-container> -->
                   <v-layout row wrap>
-                    <v-flex xs12 sm6 md12 class="">
+                    <v-flex xs12 sm6 md8 class="">
                       <v-flex xs6 sm3 md4 style="display: inline-block">
-                      <p class="secondary--text" style="font-size: 18px;">Cleanliness:</p>
+                      <p class="primary--text" style="font-size: 18px;">Cleanliness:</p>
                       </v-flex>
                       <v-flex xs6 sm3 md4 style="display: inline">
                         <star-rating 
-                        v-model='dialogData.cleanliness'
+                        v-model='review.rating.cleanliness'
                         class="mt-0 ml-2"
                         v-bind:star-size="18" 
                         :increment="0.5"
@@ -53,13 +53,13 @@
                     </v-flex>
                   </v-layout>
                   <v-layout row wrap>
-                    <v-flex xs12 sm6 md12 class="">
+                    <v-flex xs12 sm6 md8 class="">
                       <v-flex xs6 sm3 md4 style="display: inline-block">
-                      <p class="secondary--text" style="font-size: 18px;">Comfort:</p>
+                      <p class="primary--text" style="font-size: 18px;">Comfort:</p>
                       </v-flex>
                       <v-flex xs6 sm3 md4 style="display: inline">
                         <star-rating 
-                        v-model='dialogData.comfort'
+                        v-model='review.rating.comfort'
                         class="mt-0 ml-2"
                         v-bind:star-size="18" 
                         :increment="0.5"
@@ -73,13 +73,13 @@
                     </v-flex>
                   </v-layout>
                   <v-layout row wrap>
-                    <v-flex xs12 sm6 md12 class="">
+                    <v-flex xs12 sm6 md8 class="">
                       <v-flex xs6 sm3 md4 style="display: inline-block">
-                      <p class="secondary--text" style="font-size: 18px;">Location:</p>
+                      <p class="primary--text" style="font-size: 18px;">Location:</p>
                       </v-flex>
                       <v-flex xs6 sm3 md4 style="display: inline">
                         <star-rating 
-                        v-model='dialogData.location'
+                        v-model='review.rating.location'
                         class="mt-0 ml-2"
                         v-bind:star-size="18" 
                         :increment="0.5"
@@ -93,13 +93,13 @@
                     </v-flex>
                   </v-layout>
                   <v-layout row wrap>
-                    <v-flex xs12 sm6 md12 class="">
+                    <v-flex xs12 sm6 md8 class="">
                       <v-flex xs6 sm3 md4 style="display: inline-block">
-                      <p class="secondary--text" style="font-size: 18px;">Staff:</p>
+                      <p class="primary--text" style="font-size: 18px;">Staff:</p>
                       </v-flex>
                       <v-flex xs6 sm3 md4 style="display: inline">
                         <star-rating 
-                        v-model='dialogData.staff'
+                        v-model='review.rating.staff'
                         class="mt-0 ml-2"
                         v-bind:star-size="18" 
                         :increment="0.5"
@@ -112,9 +112,9 @@
                       </v-flex>
                     </v-flex>
                   </v-layout>
-                </v-container>
-              </v-card>
-            </v-dialog>
+                <!-- </v-container> -->
+              <!-- </v-card> -->
+            <!-- </v-dialog> -->
           </v-container>
         </v-card>
       </v-flex>
@@ -128,11 +128,7 @@ export default {
     StarRating
     // Review
   },
-  props: {
-    reviews: {
-      default: ''
-    }
-  },
+  props: ['reviews'],
   data() {
     return {
       dialog: false,

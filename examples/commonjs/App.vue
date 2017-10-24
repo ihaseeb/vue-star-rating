@@ -4,13 +4,7 @@
           <review :reviews='reviews'></review>
     </div> -->
     <v-container>
-      <v-layout>
-        <v-flex md6 xs12 sm8 offset-md3>
-          <v-card>
             <review :reviews='reviews'></review>
-          </v-card>
-        </v-flex>
-      </v-layout>
     </v-container>
 </template>
 
@@ -49,3 +43,6 @@ export default {
   }
 }
 </script>
+<style lang="stylus">
+  @import '../../src/stylus/main'
+</style>

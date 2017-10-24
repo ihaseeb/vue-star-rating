@@ -1,4 +1,4 @@
 import StarRating from './star-rating.vue'
-import review from './src/review.vue'
+import review from './review.vue'
 
-export default {StarRating, review}
+export default { StarRating, review }

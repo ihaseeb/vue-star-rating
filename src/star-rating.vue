@@ -6,18 +6,23 @@
             </span>
             <span v-if="showRating" :class="['vue-star-rating-rating-text', textClass]"> {{formattedRating}}</span>
         </div>
+        <div>
+          <review :reviews = 'reviews'></review>
+        </div>
     </div>
 </template>
 
-<script type="text/javascript">
-import star from "./star.vue"
+<script type='text/javascript'>
+import star from './star.vue'
+import review from './review.vue'
 export default {
   components: {
-    star
+    star,
+    review
   },
   model: {
-    prop: "rating",
-    event: "rating-selected"
+    prop: 'rating',
+    event: 'rating-selected'
   },
   props: {
     increment: {
@@ -30,11 +35,11 @@ export default {
     },
     activeColor: {
       type: String,
-      default: "#ffd055"
+      default: '#ffd055'
     },
     inactiveColor: {
       type: String,
-      default: "#d8d8d8"
+      default: '#d8d8d8'
     },
     maxRating: {
       type: Number,
@@ -54,7 +59,7 @@ export default {
     },
     textClass: {
       type: String,
-      default: ""
+      default: ''
     },
     inline: {
       type: Boolean,
@@ -62,7 +67,7 @@ export default {
     },
     borderColor: {
       type: String,
-      default: "#999"
+      default: '#999'
     },
     borderWidth: {
       type: Number,
@@ -82,68 +87,68 @@ export default {
     }
   },
   created() {
-    this.step = this.increment * 100;
-    this.currentRating = this.rating;
-    this.selectedRating = this.rating;
-    this.createStars();
+    this.step = this.increment * 100
+    this.currentRating = this.rating
+    this.selectedRating = this.rating
+    this.createStars()
   },
   methods: {
     setRating($event, persist) {
       if (!this.readOnly) {
         const position = this.rtl
           ? (100 - $event.position) / 100
-          : $event.position / 100;
-        this.currentRating = ($event.id + position - 1).toFixed(2);
+          : $event.position / 100
+        this.currentRating = ($event.id + position - 1).toFixed(2)
         this.currentRating =
           this.currentRating > this.maxRating
             ? this.maxRating
-            : this.currentRating;
-        this.createStars();
+            : this.currentRating
+        this.createStars()
         if (persist) {
-          this.selectedRating = this.currentRating;
-          this.$emit("rating-selected", this.selectedRating);
+          this.selectedRating = this.currentRating
+          this.$emit('rating-selected', this.selectedRating)
         } else {
-          this.$emit("current-rating", this.currentRating);
+          this.$emit('current-rating', this.currentRating)
         }
       }
     },
     resetRating() {
       if (!this.readOnly) {
-        this.currentRating = this.selectedRating;
-        this.createStars();
+        this.currentRating = this.selectedRating
+        this.createStars()
       }
     },
     createStars() {
-      this.round();
+      this.round()
       for (var i = 0; i < this.maxRating; i++) {
-        let level = 0;
+        let level = 0
         if (i < this.currentRating) {
           level =
-            this.currentRating - i > 1 ? 100 : (this.currentRating - i) * 100;
+            this.currentRating - i > 1 ? 100 : (this.currentRating - i) * 100
         }
-        this.$set(this.fillLevel, i, Math.round(level));
+        this.$set(this.fillLevel, i, Math.round(level))
       }
     },
     round() {
-      var inv = 1.0 / this.increment;
+      var inv = 1.0 / this.increment
       this.currentRating = Math.min(
         this.maxRating,
         Math.ceil(this.currentRating * inv) / inv
-      );
+      )
     }
   },
   computed: {
     formattedRating() {
       return this.fixedPoints === null
         ? this.currentRating
-        : this.currentRating.toFixed(this.fixedPoints);
+        : this.currentRating.toFixed(this.fixedPoints)
     }
   },
   watch: {
     rating(val) {
-      this.currentRating = val;
-      this.selectedRating = val;
-      this.createStars();
+      this.currentRating = val
+      this.selectedRating = val
+      this.createStars()
     }
   },
   data() {
@@ -151,10 +156,20 @@ export default {
       step: 0,
       fillLevel: [],
       currentRating: 0,
-      selectedRating: 0
-    };
+      selectedRating: 0,
+      reviews: {
+        comment: 'some comment',
+        rating: {
+          cleanliness: 5,
+          overallRating: 3,
+          staff: 4,
+          location: 3,
+          comfort: 3
+        }
+      }
+    }
   }
-};
+}
 </script>
 
 <style scoped>

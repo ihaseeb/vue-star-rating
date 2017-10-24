@@ -5,7 +5,7 @@
           <v-card>
             <v-container>
               <v-layout>
-                <v-flex>
+                <v-flex offset-md3>
                   {{review.comment}}
                 </v-flex>
               </v-layout>
@@ -122,27 +122,25 @@
   </v-container>
 </template>
 <script>
-import starRating from "./star-rating.vue"
+import StarRating from './star-rating.vue'
 export default {
   components: {
-    'star-rating': starRating
+    StarRating
+    // Review
   },
   props: {
     reviews: {
       default: ''
     }
   },
-  data () {
+  data() {
     return {
       dialog: false,
       dialogData: ''
     }
   },
-  components: {
-    StarRating
-  },
   methods: {
-    onClickRating (data) {
+    onClickRating(data) {
       this.dialog = true
       this.dialogData = data
     }

@@ -40,6 +40,7 @@
     "eslint-config-vue": "^2.0.2",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^2.0.1",
+    "eslint": "^4.9.0",
     "jasmine": "^2.5.3",
     "karma": "^1.4.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -52,5 +53,8 @@
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "vuetify": "^0.16.9"
   }
 }
